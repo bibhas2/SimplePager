@@ -9,17 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var pageViewController : FullScreenPageViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //Create the child view controllers
+        let vc1 = storyboard!.instantiateViewControllerWithIdentifier("PageOneViewController")
+        let vc2 = storyboard!.instantiateViewControllerWithIdentifier("PageTwoViewController")
+        
+        //Create the page view controller
+        self.pageViewController = FullScreenPageViewController(childControllers: [vc1, vc2])
+        
+        //Show the page view controller
+        self.view.addSubview(self.pageViewController.view)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
